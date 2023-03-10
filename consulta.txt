@@ -1,0 +1,22 @@
+select
+
+pcclient.DTULTCOMP,
+pcclient.DTCADASTRO,
+pcclient.DTEXCLUSAO,
+pcclient.CODCLI,
+pcclient.CLIENTE,
+pccidade.NOMECIDADE,
+pcpraca.PRACA,
+pcsuperv.NOME,
+pcusuari.NOME,
+pcgerente.NOMEGERENTE
+
+from dmedeiro.pcclient, dmedeiro.pcpraca, dmedeiro.pccidade, dmedeiro.pcsuperv, dmedeiro.pcusuari, dmedeiro.pcgerente
+
+WHERE PCCLIENT.ESTENT  in ('PI','MA')
+
+and pcclient.CODPRACA = pcpraca.CODPRACA
+and pcclient.CODCIDADE = pccidade.CODCIDADE
+and pcclient.CODUSUR1 = pcusuari.CODUSUR
+and pcusuari.CODSUPERVISOR = pcsuperv.CODSUPERVISOR
+and pcsuperv.CODGERENTE = pcgerente.CODGERENTE

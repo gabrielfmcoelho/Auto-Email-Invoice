@@ -1,0 +1,3 @@
+medeirosinvoices@gmail.com
+hzuudwpojxoyqzbj
+oracle+cx_oracle://EQDEV_DM:adsfE78EnL@172.17.61.100:1521/?service_name=wint_pdb1.zndbmedeiros.vcndbmedeiros.oraclevcn.com
