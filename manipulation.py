@@ -18,8 +18,8 @@ class manipulation:
 
     def __tratamento_inicial_base(self):
         try:
-            for campo in self.colunas_interesse[0:3]:
-                self.df_base[campo] = self.df_base[campo].str[0:10]
+            for campo in self.colunas_interesse[:3]:
+                self.df_base[campo] = self.df_base[campo].str[:10]
                 self.df_base[campo] = pd.to_datetime(self.df_base[campo], format='%d/%m/%Y', errors='raise')
             print('tratamento inicial base - sucesso')
         except:
@@ -68,8 +68,7 @@ class manipulation:
         return print("tratamento inicial emails - concluido")
     
     def lista_emails_agg(self):
-        lista_emails = self.df_emails['email'].tolist()
-        return lista_emails
+        return self.df_emails['email'].tolist()
 
     def __criando_flags_agg(self):
         try:
