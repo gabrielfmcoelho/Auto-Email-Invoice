@@ -36,7 +36,7 @@ class emailcon:
                 df_temp = self.df_agg.loc[(self.df_agg['Gerente'] == gerente)].copy().reset_index(drop=True) # Cria um df temporario com os dados do RCA atual
 
                 df_temp2 = self.df_base.loc[(self.df_base['NOMEGERENTE'] == gerente)].copy().reset_index(drop=True) # Cria um df temporario com os dados dos clientes do RCA atual
-                
+
                 if df_temp.Email[0] == 'Nao encontrado': # Se o email do RCA atual nao for encontrado na base de emails, pula para o proximo RCA
                     continue # Pula para o proximo RCA
 
@@ -44,7 +44,7 @@ class emailcon:
                 msg['Subject'] = self.Subject # Adiciona o assunto ao objeto msg
                 msg['From'] = self.email_remetente # Adiciona o email de remetente ao objeto msg
                 msg['To'] = df_temp.Email[0] # Adiciona o email de destinatario ao objeto msg
-                
+
 
                 # Cria o corpo do email em html
                 html = MIMEText(f""" 
@@ -92,7 +92,7 @@ class emailcon:
                     xlsx = MIMEApplication(f.read()) # Cria o objeto xlsx com os dados da planilha de excel temporaria do RCA atual
                     xlsx.add_header('Content-Disposition', 'attachment', filename=f'base_clientes_{gerente}_{self.hoje.date()}.xlsx') # Adiciona o nome da planilha de excel temporaria do RCA atual ao objeto xlsx
                     msg.attach(xlsx) # Adiciona a planilha de excel temporaria do RCA atual ao objeto msg
-                
+
                 msg = msg.as_string() # Converte o objeto msg para string
                 msg = msg.encode('utf-8') # Codifica o objeto msg para utf-8
 
@@ -113,8 +113,7 @@ class emailcon:
                         pass # Passa para o proximo loop
 
                 os.remove(f'./rcas/base_clientes_{gerente}.xlsx') # Apaga a planilha de excel temporaria do RCA atual
-            
+
             #fim do loop
         except:
             print('Erro ao enviar os emails')
-            pass

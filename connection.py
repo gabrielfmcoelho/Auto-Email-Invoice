@@ -13,8 +13,7 @@ class DBConnection:
     def __create_database_engine(self):
         lib_dir_oracle = r"C:\Oracle\instantclient_19_9"
         db.init_oracle_client(lib_dir=lib_dir_oracle)
-        engine = create_engine(self.__connection_string)
-        return engine
+        return create_engine(self.__connection_string)
 
     def __enter__(self):
         return self.__engine.connect()
